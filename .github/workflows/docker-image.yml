@@ -1,4 +1,4 @@
-name: Build and push server image to DockerHub
+name: Push action - build and push image to DockerHub
 
 on:
   push:
