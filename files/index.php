@@ -21,7 +21,8 @@
         }
         else
         {
-            echo "Could not get local time for this IP. Is it a local address?";
+            $date = new DateTime("now");
+            echo "Local time: " . $date->format('Y-m-d H:i:s');
         }
         ?>
     </body>
