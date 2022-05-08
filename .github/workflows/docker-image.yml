@@ -34,6 +34,7 @@ jobs:
           platforms: linux/amd64,linux/arm64/v8,linux/arm/v7
           file: ./Dockerfile
           push: true
+          tags: pawelp29/ip_time:ghcr
           labels: ${{ steps.meta.output.labels }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
