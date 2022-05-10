@@ -27,4 +27,4 @@ docker image inspect ip_time:latest | jq '[.[0]."RootFS"]'
 ```
 
 ## Check what it does
-To check if the container works, enter [localhost:8000] from your web browser. If you have changed the port number, you also need to modify it in the URL.
+To check if the container works, enter [http://localhost:8000](http://localhost:8000) from your web browser. If you have changed the port number, you also need to modify it in the URL.
