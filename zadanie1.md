@@ -28,3 +28,20 @@ docker image inspect ip_time:latest | jq '[.[0]."RootFS"]'
 
 ## Check what it does
 To check if the container works, enter [http://localhost:8000](http://localhost:8000) from your web browser. If you have changed the port number, you also need to modify it in the URL.
+
+## Building the image for multiple platforms with buildx
+If you need the image for other hardware platforms, do the following:
+1. Run the multiarch/qemu-user-static container to enable building for other platforms (unless you have it installed on the host):
+```
+docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+```
+2. Create a buildx environment:
+```
+docker buildx create --name qemu-container
+docker buildx use qemu-container
+docker buildx inspect --bootstrap
+```
+3. Build the image with buildx, specify the hardware platforms and optionally the repo to push (if you do not want to push the image, remove the `--push` option):
+```
+docker buildx build -t repo/ip_time --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --push .
+```
